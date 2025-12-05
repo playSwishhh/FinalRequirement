@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Structures & Algorithms</title>
+
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #e3e8ff, #f7f7f7);
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 38px;
+            color: #2d2d7f;
+            font-weight: 800;
+            text-shadow: 1px 1px 3px #bbb;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            margin: 25px auto;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #24308e;
+            border-left: 6px solid #4a57ff;
+            padding-left: 12px;
+            font-size: 26px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #3744a0;
+        }
+
+        h4 {
+            margin-top: 15px;
+            color: #4a57ff;
+        }
+
+        pre {
+            background: #0d0d0d;
+            color: #00ff95;
+            padding: 18px;
+            border-radius: 10px;
+            font-size: 15px;
+            overflow-x: auto;
+            margin-top: 10px;
+            border: 1px solid #333;
+        }
+
+        ol li {
+            margin: 6px 6px;
+            font-size: 17px;
+        }
+
+        
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            font-size: 15px;
+        }
+
+        footer .names {
+            font-weight: bold;
+            color: #1a237e;
+        }
+
+        footer .req {
+            font-size: 13px;
+            margin-top: 5px;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Algorithms, Pseudocode, and Data Structures</h1>
+</div>
+
+
+<div class="section">
+    <h2>A. Algorithms</h2>
+    <ol>
+        <li>Linear Search</li>
+        <li>Binary Search</li>
+        <li>Bubble Sort</li>
+        <li>Selection Sort</li>
+        <li>Insertion Sort</li>
+        <li>Merge Sort</li>
+        <li>Quick Sort</li>
+        <li>Breadth First Search</li>
+        <li>Depth First Search</li>
+        <li>Dijkstra’s Algorithm</li>
+    </ol>
+</div>
+
+<
+<div class="section">
+    <h2>B. Pseudocodes</h2>
+<pre>
+1. Linear Search 
+FOR i = 0 TO n-1 
+    IF arr[i] == key THEN RETURN i 
+RETURN -1 
+
+2. Binary Search 
+low ← 0 
+high ← n-1 
+WHILE low ≤ high 
+    mid ← (low + high) / 2 
+    IF arr[mid] == key THEN RETURN mid 
+    ELSE IF key < arr[mid] THEN high = mid-1 
+    ELSE low = mid+1 
+RETURN -1 
+
+3. Bubble Sort 
+REPEAT 
+    swapped ← false 
+    FOR i = 0 TO n-2 
+        IF arr[i] > arr[i+1] THEN 
+            SWAP(arr[i], arr[i+1]) 
+            swapped ← true 
+UNTIL swapped = false
+
+4. Selection Sort 
+FOR i = 0 TO n-1 
+    minIndex = i 
+    FOR j = i+1 TO n-1 
+        IF arr[j] < arr[minIndex] THEN minIndex = j 
+    SWAP(arr[i], arr[minIndex]) 
+
+5. Insertion Sort 
+FOR i = 1 TO n-1 
+    key = arr[i] 
+    j = i - 1 
+    WHILE j ≥ 0 AND arr[j] > key 
+        arr[j+1] = arr[j] 
+        j = j - 1 
+    arr[j+1] = key 
+
+6. Merge Sort 
+IF n <= 1 RETURN arr 
+mid = n/2 
+left = MergeSort(left half) 
+right = MergeSort(right half) 
+RETURN merge(left, right) 
+
+7. Quick Sort 
+IF low < high THEN 
+    pivot = partition(arr, low, high) 
+    QuickSort(arr, low, pivot-1) 
+    QuickSort(arr, pivot+1, high) 
+
+8. BFS 
+CREATE queue 
+ENQUEUE(start) 
+WHILE queue not empty 
+    node = DEQUEUE() 
+    FOR each neighbor of node 
+        IF not visited THEN ENQUEUE(neighbor) 
+
+9. DFS 
+FUNCTION DFS(node) 
+    mark node visited 
+    FOR each neighbor 
+        IF not visited THEN DFS(neighbor) 
+
+10. Dijkstra 
+distance[source] = 0 
+SET all others to infinity 
+REPEAT 
+    pick unvisited node with smallest distance 
+    update neighbor distances 
+UNTIL all visited
+</pre>
+</div>
+
+<
+<div class="section">
+    <h2>C. Data Structures</h2>
+
+    <h3>1. ARRAY</h3>
+<pre>
+arr = [10, 20, 30, 40]
+arr.append(50)
+print(arr)
+</pre>
+
+    <h3>2. STACK – Infix to Postfix, Prefix, and Postfix Evaluation</h3>
+
+    <h4>Infix to Postfix</h4>
+<pre>
+def infix_to_postfix(expr):
+    prec = {'+':1,'-':1,'*':2,'/':2}
+    stack = []
+    output = ""
+    for ch in expr:
+        if ch.isalnum():
+            output += ch
+        elif ch in prec:
+            while stack and prec.get(stack[-1],0) >= prec[ch]:
+                output += stack.pop()
+            stack.append(ch)
+    while stack:
+        output += stack.pop()
+    return output
+
+print(infix_to_postfix("A+B*C"))
+</pre>
+
+<h4>Postfix Evaluation</h4>
+<pre>
+def postfix_eval(expr):
+    stack = []
+    for ch in expr:
+        if ch.isdigit():
+            stack.append(int(ch))
+        else:
+            b = stack.pop()
+            a = stack.pop()
+            if ch == '+': stack.append(a+b)
+            if ch == '-': stack.append(a-b)
+            if ch == '*': stack.append(a*b)
+            if ch == '/': stack.append(a/b)
+    return stack[0]
+
+print(postfix_eval("23+5*"))
+</pre>
+
+<h4>Prefix Evaluation</h4>
+<pre>
+def prefix_eval(expr):
+    stack = []
+    for ch in reversed(expr):
+        if ch.isdigit():
+            stack.append(int(ch))
+        else:
+            a = stack.pop()
+            b = stack.pop()
+            if ch == '+': stack.append(a+b)
+            if ch == '-': stack.append(a-b)
+            if ch == '*': stack.append(a*b)
+            if ch == '/': stack.append(a/b)
+    return stack[0]
+
+print(prefix_eval("*+235"))
+</pre>
+
+    <h3>3. QUEUE</h3>
+<pre>
+from collections import deque
+
+q = deque()
+q.append(10)
+q.append(20)
+print(q.popleft())
+</pre>
+
+    <h3>4. TREES – Inorder, Preorder, Postorder</h3>
+<pre>
+class Node:
+    def __init__(self, v):
+        self.val = v
+        self.left = None
+        self.right = None
+
+    def inorder(root): 
+        if root: 
+            inorder(root.left) 
+            print(root.val, end=" ") 
+            inorder(root.right) 
+
+    def preorder(root): 
+        if root: print(root.val, end=" ") 
+            preorder(root.left) 
+            preorder(root.right) 
+
+    def postorder(root): 
+        if root: postorder(root.left) 
+            postorder(root.right)
+            print(root.val, end=" ") 
+
+    # Example tree 
+    root = Node(1) 
+    root.left = Node(2) 
+    root.right = Node(3) 
+
+    inorder(root)
+</pre>
+</div>
+
+
+<footer>
+    <div class="names">
+        Catabay, Dale | Adonis, Trixie | Reginaldo, Rhayven | Gayla, Dennis | Ramos, John Loyd |
+        Raposas, Jomari | Bas, Jerven | Laureo, Jonathan | Salatan, Nelson | Mencias, Kevin
+    </div>
+    <div class="req">For CC104 Final Requirement</div>
+</footer>
+
+</body>
+</html>
